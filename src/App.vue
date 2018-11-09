@@ -27,7 +27,7 @@ export default {
     return {
       client_id: 'fef0c38afdaa4991b99105485070a86b',
       scopes: 'user-top-read',
-      redirect_uri: 'localhost:8080',
+      redirect_uri: 'https://blissful-minsky-31dfc6.netlify.com',
       me: null
     }
   },
