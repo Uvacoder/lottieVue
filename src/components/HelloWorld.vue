@@ -15,7 +15,7 @@
 
 <script>
   import Lottie from 'vue-lottie';
-  import animationData from '../assets/preloader.json';
+  import animationData from '../assets/tryout1.json';
 
   export default {
     name: 'app',
