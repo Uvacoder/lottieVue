@@ -56,7 +56,7 @@
       },
 
       onSpeedChange: function (tempo) {
-        console.log(tempo)
+        
         this.animationSpeed = tempo / 120;
         this.anim.setSpeed(this.animationSpeed);
       }

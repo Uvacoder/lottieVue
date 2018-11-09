@@ -20,9 +20,6 @@ import HelloWorld from './components/HelloWorld.vue'
 // import { firebase } from 'firebase';
 
 
-import spotify from 'spotify-web-api-node'
-import VueSpotify from 'vue-spotify'
-
 export default {
   name: 'app',
   components: {
@@ -33,6 +30,7 @@ export default {
       client_id: 'fef0c38afdaa4991b99105485070a86b',
       scopes: 'user-top-read',
       redirect_uri: 'https://blissful-minsky-31dfc6.netlify.com/',
+      // redirect_uri: 'http://localhost:8080/',
       me: null,
       search: null,
       songs: null,
@@ -56,7 +54,7 @@ export default {
             'Authorization': `Bearer ${payload}`
           }
         }).then(response => {
-          console.log(response)
+          
           return response.json()
         }).then(data => {
           this.me = data
@@ -68,13 +66,13 @@ export default {
       }
     },
       searchSongs() {
-        console.log(this.payload);
+        
         fetch('https://api.spotify.com/v1/search?q='+this.song+'&type=track&market=US&limit=10&offset=5', {
           headers: {
             'Authorization': 'Bearer ' + this.payload
           }
         }).then(response => {
-          console.log(response)
+          
           return response.json()
         }).then(data => {
           
@@ -86,7 +84,7 @@ export default {
   },
 
     searchSong(song) {
-console.log(song);
+
        
         fetch('https://api.spotify.com/v1/tracks?ids=' + song, {
           headers: {
@@ -103,7 +101,7 @@ console.log(song);
             'Authorization': 'Bearer ' + this.payload
           }
         }).then(response => {
-          console.log(response)
+    
           return response.json()
         }).then(data => {
           
