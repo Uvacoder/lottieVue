@@ -3,13 +3,14 @@
 
         <lottie :options="defaultOptions" :height="400" :width="400" v-on:animCreated="handleAnimation"/>
         <div>
-            <p>BPM: {{bpm}}</p>
-            <input type="range" value="1" min="0" max="240" step="1"
-                   v-on:change="onSpeedChange" v-model="bpm">
+            <p>BPM: {{tempo}}</p>
+            <!-- {{this.animationSpeed}} -->
+            <!-- <input type="range" value="1" min="0" max="240" step="1"
+                   v-on:change="onSpeedChange" v-model="tempo"> -->
         </div>
-        <button v-on:click="stop">stop</button>
+        <!-- <button v-on:click="stop">stop</button>
         <button v-on:click="pause">pause</button>
-        <button v-on:click="play">play</button>
+        <button v-on:click="play">play</button> -->
     </div>
 </template>
 
@@ -22,11 +23,12 @@
     components: {
       'lottie': Lottie
     },
+    props: ['tempo'],
+
     data() {
       return {
-        defaultOptions: {animationData: animationData},
+        defaultOptions: {animationData: animationData, autoplay: false},
         animationSpeed: 1,
-        bpm: 120
       }
     },
     
@@ -47,8 +49,15 @@
         this.anim.pause();
       },
 
-      onSpeedChange: function () {
-        this.animationSpeed = this.bpm / 120;
+      setSpeed: function (tempo) {
+        this.animationSpeed = tempo / 120;
+        this.anim.setSpeed(this.animationSpeed);
+
+      },
+
+      onSpeedChange: function (tempo) {
+        console.log(tempo)
+        this.animationSpeed = tempo / 120;
         this.anim.setSpeed(this.animationSpeed);
       }
     }
